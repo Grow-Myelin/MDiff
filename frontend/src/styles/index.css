@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cream text-verdant-dark font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold text-verdant;
+  }
+  
+  ::selection {
+    @apply bg-verdant-light text-cream;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-verdant hover:bg-verdant-dark text-cream px-6 py-3 rounded-lg font-medium transition-colors duration-200 shadow-md hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply bg-coffee hover:bg-coffee-dark text-cream px-6 py-3 rounded-lg font-medium transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-cream-light rounded-xl shadow-lg p-6 border border-coffee/10;
+  }
+  
+  .highlight-common {
+    @apply bg-blue-200/40 border-b-2 border-blue-500 cursor-pointer transition-all duration-200 hover:bg-blue-200/60;
+  }
+  
+  .highlight-contradiction {
+    @apply bg-red-200/40 border-b-2 border-red-500 cursor-pointer transition-all duration-200 hover:bg-red-200/60;
+  }
+
+  /* Higher specificity for mark elements in markdown content */
+  .markdown-container mark.highlight-common,
+  mark.highlight-common {
+    background-color: rgba(147, 197, 253, 0.4) !important;
+    border-bottom: 2px solid rgb(59, 130, 246) !important;
+    cursor: pointer !important;
+    transition: all 200ms !important;
+    padding: 1px 2px !important;
+    border-radius: 2px !important;
+  }
+  
+  .markdown-container mark.highlight-contradiction,
+  mark.highlight-contradiction {
+    background-color: rgba(254, 202, 202, 0.4) !important;
+    border-bottom: 2px solid rgb(239, 68, 68) !important;
+    cursor: pointer !important;
+    transition: all 200ms !important;
+    padding: 1px 2px !important;
+    border-radius: 2px !important;
+  }
+
+  .markdown-container mark.highlight-common:hover,
+  mark.highlight-common:hover {
+    background-color: rgba(147, 197, 253, 0.6) !important;
+  }
+
+  .markdown-container mark.highlight-contradiction:hover,
+  mark.highlight-contradiction:hover {
+    background-color: rgba(254, 202, 202, 0.6) !important;
+  }
+
+  /* Ensure mark element default styling is overridden */
+  .markdown-container mark {
+    background-color: transparent !important;
+  }
+}
+
+.markdown-container {
+  @apply prose max-w-none;
+}
+
+/* Remove any unwanted background colors from prose styling */
+.markdown-container *:not(mark) {
+  background-color: transparent !important;
+}
+
+/* Normalize indented markdown content */
+.markdown-container blockquote {
+  @apply border-l-4 border-coffee/30 pl-4 my-4 italic text-verdant-dark;
+  margin-left: 0 !important;
+  background-color: transparent !important;
+}
+
+.markdown-container blockquote p {
+  @apply mb-2;
+}
+
+/* Ensure consistent rendering for indented content */
+.markdown-container > * {
+  margin-left: 0 !important;
+}
+
+.markdown-container h1 {
+  @apply text-3xl mb-4 text-verdant;
+}
+
+.markdown-container h2 {
+  @apply text-2xl mb-3 text-verdant;
+}
+
+.markdown-container h3 {
+  @apply text-xl mb-2 text-verdant-dark;
+}
+
+.markdown-container p {
+  @apply mb-4 leading-relaxed;
+}
+
+.markdown-container ul, .markdown-container ol {
+  @apply mb-4 ml-6;
+}
+
+.markdown-container li {
+  @apply mb-2;
+}
+
+.markdown-container code {
+  @apply bg-coffee/10 px-1 py-0.5 rounded text-coffee-dark text-sm;
+}
+
+.markdown-container pre {
+  @apply bg-gray-50 text-gray-800 p-3 rounded border border-gray-200 overflow-x-auto mb-4 text-sm;
+}
+
+.markdown-container pre code {
+  @apply bg-transparent p-0 text-gray-800;
+}
+
+.loading-spinner {
+  @apply inline-block w-8 h-8 border-4 border-verdant border-t-transparent rounded-full animate-spin;
+}
